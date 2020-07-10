@@ -62,6 +62,8 @@ app.get("/:newList", function(req,res) {
     const newList = _.capitalize(req.params.newList);
     if(req.params.newList === "about"){
         res.render("about");
+    } else if(req.params.newList === "addNewList"){
+        res.render("addNewList");
     } else{
         List.findOne({name: newList}, function(err, findList) {
             if(!err){
@@ -120,10 +122,6 @@ app.post("/delete", function(req,res) {
         });
     }
 })
-
-// app.get("/about", function(req,res) {
-//     res.render("about");
-// })
 
 app.listen(process.env.PORT || 3000, function() {
     console.log("Server is working at port 3000");
